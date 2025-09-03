@@ -30,6 +30,13 @@ public class Application {
 	public String helloPOST( @RequestBody HelloRequest request) {
 		return String.format("{\"message\":\"Hello %s %s\"}",request.getFirstName(), request.getLastName());
 	}
+
+	// Added endpoints for ping pong
+	@GetMapping(value="/ping")
+	public String helloGET(
+			@RequestParam(defaultValue = "") String name) {
+		return String.format("pong %s",name);
+	}
 }
 
 class HelloRequest{
