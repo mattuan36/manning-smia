@@ -1,0 +1,515 @@
+{
+	"info": {
+		"_postman_id": "8ef9a461-d64b-4f2c-86d7-35e3001ea04b",
+		"name": "CSI5347 Assn 3.1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48125596",
+		"_collection_link": "https://mattuan36-5117268.postman.co/workspace/Matthew-Tuan's-Workspace~7e482b3a-cdf1-488a-85b0-dd194e211667/collection/48125596-8ef9a461-d64b-4f2c-86d7-35e3001ea04b?action=share&source=collection_link&creator=48125596"
+	},
+	"item": [
+		{
+			"name": "Get License",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license/0235431845",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license",
+						"0235431845"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete License",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license/0235431845",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license",
+						"0235431845"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post License",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licenseId\":\"0235431845\",\r\n    \"organizationId\":\"Optima Growth\",\r\n    \"description\":\"Software product\",\r\n    \"productName\":\"Ostock\",\r\n    \"licenseType\":\"complete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put License",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licenseId\":\"0235431845\",\r\n    \"organizationId\":\"Optima Growth\",\r\n    \"description\":\"Software product\",\r\n    \"productName\":\"Ostock\",\r\n    \"licenseType\":\"complete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get en",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license/0235431845",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license",
+						"0235431845"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete en",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license/0235431845",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license",
+						"0235431845"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post en",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licenseId\":\"0235431845\",\r\n    \"organizationId\":\"Optima Growth\",\r\n    \"description\":\"Software product\",\r\n    \"productName\":\"Ostock\",\r\n    \"licenseType\":\"complete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put en",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licenseId\":\"0235431845\",\r\n    \"organizationId\":\"Optima Growth\",\r\n    \"description\":\"Software product\",\r\n    \"productName\":\"Ostock\",\r\n    \"licenseType\":\"complete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get es",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "es",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license/0235431845",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license",
+						"0235431845"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete es",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "es",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license/0235431845",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license",
+						"0235431845"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post es",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "es",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licenseId\":\"0235431845\",\r\n    \"organizationId\":\"Optima Growth\",\r\n    \"description\":\"Software product\",\r\n    \"productName\":\"Ostock\",\r\n    \"licenseType\":\"complete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put es",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "es",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licenseId\":\"0235431845\",\r\n    \"organizationId\":\"Optima Growth\",\r\n    \"description\":\"Software product\",\r\n    \"productName\":\"Ostock\",\r\n    \"licenseType\":\"complete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ma",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ma",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license/0235431845",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license",
+						"0235431845"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete ma",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ma",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license/0235431845",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license",
+						"0235431845"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post ma",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ma",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licenseId\":\"0235431845\",\r\n    \"organizationId\":\"Optima Growth\",\r\n    \"description\":\"Software product\",\r\n    \"productName\":\"Ostock\",\r\n    \"licenseType\":\"complete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put ma",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ma",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licenseId\":\"0235431845\",\r\n    \"organizationId\":\"Optima Growth\",\r\n    \"description\":\"Software product\",\r\n    \"productName\":\"Ostock\",\r\n    \"licenseType\":\"complete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/organization/optimaGrowth/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"organization",
+						"optimaGrowth",
+						"license"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
