@@ -114,10 +114,10 @@ public class LicenseService {
 
 	}
 
-	@CircuitBreaker(name = "licenseService", fallbackMethod = "buildFallbackLicenseList")
-	@RateLimiter(name = "licenseService", fallbackMethod = "buildFallbackLicenseList")
-	@Retry(name = "retryLicenseService", fallbackMethod = "buildFallbackLicenseList")
-	@Bulkhead(name = "bulkheadLicenseService", type= Type.THREADPOOL, fallbackMethod = "buildFallbackLicenseList")
+	@CircuitBreaker(name = "licenseService", fallbackMethod = "customFallbackLicenseList")
+	@RateLimiter(name = "licenseService", fallbackMethod = "customFallbackLicenseList")
+	@Retry(name = "retryLicenseService", fallbackMethod = "customFallbackLicenseList")
+	@Bulkhead(name = "bulkheadLicenseService", type= Type.THREADPOOL, fallbackMethod = "customFallbackLicenseList")
 	public List<License> getLicensesByOrganization(String organizationId) throws TimeoutException {
 		logger.debug("getLicensesByOrganization Correlation id: {}",
 				UserContextHolder.getContext().getCorrelationId());
@@ -135,6 +135,18 @@ public class LicenseService {
 		fallbackList.add(license);
 		return fallbackList;
 	}
+
+    @SuppressWarnings("unused")
+    private List<License> customFallbackLicenseList(String organizationId, Throwable t){
+        List<License> fallbackList = new ArrayList<>();
+        License license = new License();
+        license.setLicenseId("1111111-11-11111");
+        license.setOrganizationId(organizationId);
+        license.setProductName("Custom fallback licensing. No information currently available");
+        fallbackList.add(license);
+        logger.info("custom fallback method initiated");
+        return fallbackList;
+    }
 
 	private void randomlyRunLong() throws TimeoutException{
 		Random rand = new Random();

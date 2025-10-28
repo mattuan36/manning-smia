@@ -1,4 +1,3 @@
-version: '2.1'
 services:
   database:
     image: postgres:latest
@@ -6,7 +5,7 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_PASSWORD: "password"
       POSTGRES_DB:       "ostock_dev"
     volumes:
         - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
@@ -21,7 +20,7 @@ services:
       timeout: 5s
       retries: 5
   configserver:
-    image: ostock/configserver:0.0.1-SNAPSHOT
+    image: configserver:0.0.1-SNAPSHOT
     ports:
        - "8071:8071"
     environment:
@@ -31,7 +30,7 @@ services:
         aliases:
           - "configserver"
   eurekaserver:
-    image: ostock/eurekaserver:0.0.1-SNAPSHOT
+    image: eurekaserver:0.0.1-SNAPSHOT
     ports:
       - "8070:8070"
     depends_on:
@@ -44,7 +43,7 @@ services:
         aliases:
           - "eurekaserver"
   licensingservice:
-    image: ostock/licensing-service:0.0.3-SNAPSHOT
+    image: licensing-service:0.0.3-SNAPSHOT
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
@@ -61,7 +60,7 @@ services:
     networks:
       - backend
   organizationservice:
-    image: ostock/organization-service:0.0.1-SNAPSHOT
+    image: organization-service:0.0.1-SNAPSHOT
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
