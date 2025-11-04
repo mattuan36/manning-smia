@@ -4,6 +4,19 @@ spring:
     cloud:
         config: 
             uri: http://configserver:8071
+        gateway:
+          discovery.locator:
+            enabled: true
+            lower-case-service-id: true
+          routes:
+            id: organization-service
+            uri: lb://organization-service
+
+            predicates:
+              Path=/organization/**
+
+            filters:
+              RewritePath=/organization/(?<path>.*), /$\{path}
 
 logging:
   level:

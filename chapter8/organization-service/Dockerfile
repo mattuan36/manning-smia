@@ -6,10 +6,10 @@ FROM openjdk:11-slim as build
 LABEL maintainer="Illary Huaylupo <illaryhs@gmail.com>"
 
 # The application's jar file
-ARG JAR_FILE
+#ARG JAR_FILE
 
 # Add the application's jar to the container
-COPY ${JAR_FILE} app.jar
+COPY target/*.jar app.jar
 
 #unpackage jar file
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf /app.jar)
@@ -22,10 +22,10 @@ FROM openjdk:11-slim
 VOLUME /tmp
 
 #Copy unpackaged application to new container
-ARG DEPENDENCY=/target/dependency
-COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
-COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+#ARG DEPENDENCY=/target/dependency
+COPY --from=build /target/dependency/BOOT-INF/lib /app/lib
+COPY --from=build /target/dependency/META-INF /app/META-INF
+COPY --from=build /target/dependency/BOOT-INF/classes /app
 
 #execute the application
 ENTRYPOINT ["java","-cp","app:app/lib/*","com.optimagrowth.organization.OrganizationServiceApplication"]

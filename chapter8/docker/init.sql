@@ -13,6 +13,8 @@ TABLESPACE pg_default;
 ALTER TABLE public.organizations
     OWNER to postgres;
 
+ALTER USER postgres PASSWORD 'password';
+
 
 CREATE TABLE IF NOT EXISTS public.licenses
 (
