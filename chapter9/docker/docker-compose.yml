@@ -1,9 +1,8 @@
-version: '2.1'
 services:
   database:
     image: postgres:latest
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
@@ -21,7 +20,7 @@ services:
       timeout: 5s
       retries: 5
   configserver:
-    image: ostock/configserver:0.0.1-SNAPSHOT
+    image: configserver:0.0.1-SNAPSHOT
     ports:
        - "8071:8071"
     environment:
@@ -66,7 +65,7 @@ services:
         aliases:
           - "gateway"
   licensingservice:
-    image: ostock/licensing-service:0.0.3-SNAPSHOT
+    image: ostock/licensingservice:0.0.3-SNAPSHOT
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
@@ -83,7 +82,7 @@ services:
     networks:
       - backend
   organizationservice:
-    image: ostock/organization-service:0.0.1-SNAPSHOT
+    image: ostock/organizationservice:0.0.1-SNAPSHOT
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
@@ -100,22 +99,21 @@ services:
     networks:
       - backend
 
+#https://github.com/Tauromachian/keycloak-production-docker-compose/blob/master/docker-compose.external-cert.yml
   keycloak:
-    image: jboss/keycloak
+    image: quay.io/keycloak/keycloak:latest
     restart: always
-    environment:
-      KEYCLOAK_VERSION: 6.0.1
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
-    volumes:
-        - ./realm-export.json:/opt/jboss/keycloak/realm-export.json
-    command:
-      - "-b 0.0.0.0"
-      - "-Dkeycloak.import=/opt/jboss/keycloak/realm-export.json"
-      - "-Dkeycloak.profile.feature.scripts=enabled"
-      - "-Dkeycloak.profile.feature.upload_scripts=enabled"
     ports:
       - "8080:8080"
+    volumes:
+      - ./realm-export.json:/opt/jboss/keycloak/realm-export.json
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_SPI_TRUSTSTORE_FILE_SCRIPT_ENABLE: true
+      KC_FEATURES: scripts
+    command:
+      - start-dev
     networks:
       backend:
         aliases:

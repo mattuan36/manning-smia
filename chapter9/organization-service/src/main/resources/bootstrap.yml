@@ -1,8 +1,13 @@
 spring:
     application:
-     name: organization-service 
+     name: organizationservice
     profiles:
       active: dev
     cloud:
         config: 
             uri: http://configserver:8071
+    security:
+      oauth2:
+        resourceserver:
+          jwt:
+            issuer-uri: http://keycloak:8080/realms/spia-realm
