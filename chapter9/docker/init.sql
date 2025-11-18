@@ -1,36 +1,50 @@
-CREATE TABLE IF NOT EXISTS public.organizations
+CREATE TABLE IF NOT EXISTS public.customers
 (
-    organization_id text COLLATE pg_catalog."default" NOT NULL,
-    name text COLLATE pg_catalog."default",
-    contact_name text COLLATE pg_catalog."default",
-    contact_email text COLLATE pg_catalog."default",
-    contact_phone text COLLATE pg_catalog."default",
-    CONSTRAINT organizations_pkey PRIMARY KEY (organization_id)
+    customer_id text COLLATE pg_catalog."default" NOT NULL,
+    first_name text COLLATE pg_catalog."default",
+    last_name text COLLATE pg_catalog."default",
+    email text COLLATE pg_catalog."default",
+    address text COLLATE pg_catalog."default",
+    comment text COLLATE pg_catalog."default",
+    CONSTRAINT customers_pkey PRIMARY KEY (customer_id)
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE public.organizations
+ALTER TABLE public.customers
     OWNER to postgres;
 
 
-CREATE TABLE IF NOT EXISTS public.licenses
+CREATE TABLE IF NOT EXISTS public.inventory
 (
-    license_id text COLLATE pg_catalog."default" NOT NULL,
-    organization_id text COLLATE pg_catalog."default" NOT NULL,
-    description text COLLATE pg_catalog."default",
-    product_name text COLLATE pg_catalog."default" NOT NULL,
-    license_type text COLLATE pg_catalog."default" NOT NULL,
+    inventory_id text COLLATE pg_catalog."default" NOT NULL,
+    name text COLLATE pg_catalog."default" NOT NULL,
+    category text COLLATE pg_catalog."default",
+    description text COLLATE pg_catalog."default" NOT NULL,
+    stock text COLLATE pg_catalog."default" NOT NULL,
     comment text COLLATE pg_catalog."default",
-    CONSTRAINT licenses_pkey PRIMARY KEY (license_id),
-    CONSTRAINT licenses_organization_id_fkey FOREIGN KEY (organization_id)
-        REFERENCES public.organizations (organization_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-        NOT VALID
+    CONSTRAINT inventory_pkey PRIMARY KEY (inventory_id)
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE public.licenses
+ALTER TABLE public.inventory
+    OWNER to postgres;
+
+
+CREATE TABLE IF NOT EXISTS public.orders
+(
+    orders_id text COLLATE pg_catalog."default" NOT NULL,
+    orders_number text COLLATE pg_catalog."default" NOT NULL,
+    orders_status text COLLATE pg_catalog."default",
+    customer_name text COLLATE pg_catalog."default" NOT NULL,
+    order_date text COLLATE pg_catalog."default" NOT NULL,
+    cart_id text COLLATE pg_catalog."default" NOT NULL,
+    comment text COLLATE pg_catalog."default",
+    CONSTRAINT orders_pkey PRIMARY KEY (orders_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.orders
     OWNER to postgres;

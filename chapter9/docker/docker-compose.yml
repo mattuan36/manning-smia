@@ -9,7 +9,6 @@ services:
       POSTGRES_DB:       "ostock_dev"
     volumes:
         - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
-        - ./data.sql:/docker-entrypoint-initdb.d/2-data.sql
     networks:
       backend:
         aliases:
@@ -64,8 +63,8 @@ services:
       backend:
         aliases:
           - "gateway"
-  licensingservice:
-    image: licensingservice:latest
+  customerservice:
+    image: customerservice:latest
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
@@ -81,21 +80,38 @@ services:
       - "8180:8080"
     networks:
       - backend
-  organizationservice:
-    image: organizationservice:latest
+  inventoryservice:
+    image: inventoryservice:latest
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
-      CONFIGSERVER_PORT:   "8071"
+      CONFIGSERVER_PORT: "8071"
       DATABASESERVER_PORT: "5432"
-      ENCRYPT_KEY:       "IMSYMMETRIC"
+      ENCRYPT_KEY: "IMSYMMETRIC"
     depends_on:
       database:
         condition: service_healthy
       configserver:
         condition: service_started
     ports:
-      - "8081:8081"
+      - "8280:8280"
+    networks:
+      - backend
+  ordersservice:
+    image: ordersservice:latest
+    environment:
+      PROFILE: "dev"
+      CONFIGSERVER_URI: "http://configserver:8071"
+      CONFIGSERVER_PORT: "8071"
+      DATABASESERVER_PORT: "5432"
+      ENCRYPT_KEY: "IMSYMMETRIC"
+    depends_on:
+      database:
+        condition: service_healthy
+      configserver:
+        condition: service_started
+    ports:
+      - "8380:8380"
     networks:
       - backend
 

@@ -26,20 +26,27 @@ spring:
     loadbalancer.ribbon.enabled: false
     gateway:
         routes:
-        - id: organization-service
-          uri: lb://organization-service
+        - id: customer-service
+          uri: lb://customer-service
           predicates:
-          - Path=/organization/**
+          - Path=/customer/**
           filters:
-          - RewritePath=/organization/(?<path>.*), /$\{path}
+          - RewritePath=/customer/(?<path>.*), /$\{path}
           - RemoveRequestHeader= Cookie,Set-Cookie
-        - id: licensing-service
-          uri: lb://licensing-service
+        - id: inventory-service
+          uri: lb://inventory-service
           predicates:
-          - Path=/license/**
+            - Path=/inventory/**
           filters:
-          - RewritePath=/license/(?<path>.*), /$\{path}
-          - RemoveRequestHeader= Cookie,Set-Cookie
+            - RewritePath=/inventory/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
+        - id: orders-service
+          uri: lb://orders-service
+          predicates:
+            - Path=/orders/**
+          filters:
+            - RewritePath=/orders/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
    
     
 management:
