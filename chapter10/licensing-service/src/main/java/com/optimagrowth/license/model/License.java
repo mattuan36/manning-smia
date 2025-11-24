@@ -15,7 +15,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 
-@Getter @Setter @ToString
+@ToString
 @Entity
 @Table(name="licenses")
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -42,6 +42,75 @@ public class License extends RepresentationModel<License> {
 	@Transient
 	private String contactEmail;
 
+	public void setLicenseId(String licenseId){
+		this.licenseId = licenseId;
+	}
+	public String getLicenseId(){
+		return licenseId;
+	}
+
+	public void setDescription(String description){
+		this.description = description;
+	}
+	public String getDescription(){
+		return description;
+	}
+
+	public void setOrganizationId(String organizationId){
+		this.organizationId = organizationId;
+	}
+	public String getOrganizationId(){
+		return organizationId;
+	}
+
+	public void setProductName(String productName){
+		this.productName = productName;
+	}
+	public String getProductName(){
+		return productName;
+	}
+
+	public void setLicenceType(String licenseType){
+		this.licenseType = licenseType;
+	}
+	public String getLicenceType(){
+		return licenseType;
+	}
+
+	public void setComment(String comment){
+		this.comment = comment;
+	}
+	public String getComment(){
+		return comment;
+	}
+
+	public void setOrganizationName(String organizationName){
+		this.organizationName = organizationName;
+	}
+	public String getOrganizationName(){
+		return organizationName;
+	}
+
+	public void setContactName(String contactName){
+		this.contactName = contactName;
+	}
+	public String getContactName(){
+		return contactName;
+	}
+
+	public void setContactPhone(String contactPhone){
+		this.contactPhone = contactPhone;
+	}
+	public String getContactPhone(){
+		return contactPhone;
+	}
+
+	public void setContactEmail(String contactEmail){
+		this.contactEmail = contactEmail;
+	}
+	public String getContactEmail(){
+		return contactEmail;
+	}
 
 	public License withComment(String comment){
 		this.setComment(comment);
