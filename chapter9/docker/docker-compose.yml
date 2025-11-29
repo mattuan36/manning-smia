@@ -20,7 +20,7 @@ services:
       timeout: 5s
       retries: 5
   configserver:
-    image: configserver:0.0.1-SNAPSHOT
+    image: configserver:0
     ports:
        - "8071:8071"
     environment:
@@ -30,7 +30,7 @@ services:
         aliases:
           - "configserver"
   eurekaserver:
-    image: ostock/eurekaserver:0.0.1-SNAPSHOT
+    image: eurekaserver:0
     ports:
       - "8070:8070"
     depends_on:
@@ -43,7 +43,7 @@ services:
         aliases:
           - "eurekaserver"
   gatewayserver:
-    image: ostock/gatewayserver:0.0.1-SNAPSHOT
+    image: gatewayserver:0
     ports:
       - "8072:8072"
     environment:
@@ -65,7 +65,7 @@ services:
         aliases:
           - "gateway"
   licensingservice:
-    image: ostock/licensingservice:0.0.3-SNAPSHOT
+    image: licensingservice:0
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
@@ -82,7 +82,7 @@ services:
     networks:
       - backend
   organizationservice:
-    image: ostock/organizationservice:0.0.1-SNAPSHOT
+    image: orgservice:0
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
