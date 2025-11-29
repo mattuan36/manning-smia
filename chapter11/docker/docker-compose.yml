@@ -22,7 +22,7 @@ services:
       timeout: 5s
       retries: 5
   configserver:
-    image: ostock/configserver:0.0.1-SNAPSHOT
+    image: configserver:SNAPSHOT
     container_name: configServer
     ports:
        - "8071:8071"
@@ -33,7 +33,7 @@ services:
         aliases:
           - "configserver"
   eurekaserver:
-    image: ostock/eurekaserver:0.0.1-SNAPSHOT
+    image: eurekaserver:SNAPSHOT
     container_name: eurekaServer
     ports:
       - "8070:8070"
@@ -47,7 +47,7 @@ services:
         aliases:
           - "eurekaserver"
   gatewayserver:
-    image: ostock/gatewayserver:0.0.1-SNAPSHOT
+    image: gatewayserver:SNAPSHOT
     container_name: gateway
     ports:
       - "8072:8072"
@@ -106,7 +106,7 @@ services:
         aliases:
           - "redis"
   licensingservice:
-    image: ostock/licensing-service:0.0.3-SNAPSHOT
+    image: licensing-service:SNAPSHOT
     container_name: licensing-service
     environment:
       PROFILE: "dev"
@@ -126,7 +126,7 @@ services:
     networks:
       - backend
   organizationservice:
-    image: ostock/organization-service:0.0.1-SNAPSHOT
+    image: organization-service:SNAPSHOT
     container_name: organization-service
     environment:
       PROFILE: "dev"
