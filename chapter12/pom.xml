@@ -27,8 +27,9 @@
     <module>eurekaserver</module>
     <module>gatewayserver</module>
     <module>authentication-service</module>
-    <module>licensing-service</module>
-    <module>organization-service</module>
+    <module>customer-service</module>
+    <module>inventory-service</module>
+    <module>orders-service</module>
   </modules>
   <build>
     <plugins>

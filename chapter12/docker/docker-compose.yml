@@ -22,7 +22,7 @@ services:
       timeout: 5s
       retries: 5
   configserver:
-    image: ostock/configserver:chapter12
+    image: configserver:latest
     container_name: configServer
     ports:
        - "8071:8071"
@@ -33,7 +33,7 @@ services:
         aliases:
           - "configserver"
   eurekaserver:
-    image: ostock/eurekaserver:chapter12
+    image: eurekaserver:latest
     container_name: eurekaServer
     ports:
       - "8070:8070"
@@ -47,7 +47,7 @@ services:
         aliases:
           - "eurekaserver"
   gatewayserver:
-    image: ostock/gatewayserver:chapter12
+    image: gatewayserver:latest
     container_name: gateway
     ports:
       - "8072:8072"
@@ -106,7 +106,7 @@ services:
         aliases:
           - "redis"
   authenticationservice:
-    image: ostock/authentication-service:chapter12
+    image: authentication-service:latest
     container_name: authentication-service
     environment:
       PROFILE: "dev"
@@ -124,9 +124,9 @@ services:
       backend:
         aliases:
           - "authenticationservice"
-  licensingservice:
-    image: ostock/licensing-service:chapter12
-    container_name: licensing-service
+  customerservice:
+    image: customer-service:latest
+    container_name: customer-service
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
@@ -146,9 +146,31 @@ services:
       - "8080:8080"
     networks:
       - backend
-  organizationservice:
-    image: ostock/organization-service:chapter12
-    container_name: organization-service
+  inventoryservice:
+    image: inventory-service:latest
+    container_name: inventory-service
+    environment:
+      PROFILE: "dev"
+      CONFIGSERVER_URI: "http://configserver:8071"
+      CONFIGSERVER_PORT: "8071"
+      DATABASESERVER_PORT: "5432"
+      ENCRYPT_KEY: "IMSYMMETRIC"
+    depends_on:
+      database:
+        condition: service_healthy
+      configserver:
+        condition: service_started
+      authenticationservice:
+        condition: service_started
+      kafkaserver:
+        condition: service_started
+    ports:
+      - "8081:8081"
+    networks:
+      - backend
+  ordersservice:
+    image: orders-service:latest
+    container_name: orders-service
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
@@ -163,7 +185,7 @@ services:
       kafkaserver:
         condition: service_started
     ports:
-      - "8081:8081"
+      - "8082:8082"
     networks:
       - backend
   elasticsearch:

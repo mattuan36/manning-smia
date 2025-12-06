@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.optimagrowth</groupId>
 	<artifactId>eurekaserver</artifactId>
-	<version>chapter12</version>
+	<version>checkpoint3</version>
 	<name>Eureka Server</name>
 	<description>Eureka Server</description>
 

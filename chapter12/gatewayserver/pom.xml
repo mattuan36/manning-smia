@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.optimagrowth</groupId>
 	<artifactId>gatewayserver</artifactId>
-	<version>chapter12</version>
+	<version>checkpoint3</version>
 	<name>API Gateway server </name>
 	<description>API Gateway server </description>
 

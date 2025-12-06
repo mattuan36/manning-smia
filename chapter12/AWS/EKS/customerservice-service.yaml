@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.21.0 (992df58d8)
   creationTimestamp: null
   labels:
-    io.kompose.service: licensingservice
-  name: licensingservice
+    io.kompose.service: customerservice
+  name: customerservice
 spec:
   ports:
   - name: "8080"
     port: 8080
     targetPort: 8080
   selector:
-    io.kompose.service: licensingservice
+    io.kompose.service: customerservice
 status:
   loadBalancer: {}

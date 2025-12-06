@@ -10,7 +10,7 @@ spring:
         #native:
          #search-locations: classpath:/config
         git:
-           uri: https://github.com/ihuaylupo/config.git
+           uri: https://github.com/mattuan36/CSI5347config.git
     
 server:
   port: 8071
